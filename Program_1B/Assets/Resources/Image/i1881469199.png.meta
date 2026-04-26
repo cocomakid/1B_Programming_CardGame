@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: e3a170c05c06675478b6c754f9e1d040
+guid: 57c61f8ece916704abc162ab60469f47
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6668889995411527926
-    second: "\uC2A4\uD06C\uB9B0\uC0F7 2026-04-14 174426_0"
+      213: -8508617542261743132
+    second: i1881469199_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -46,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -100,23 +100,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Card_05
+      name: i1881469199_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 1
         y: 0
-        width: 399
-        height: 399
+        width: 99
+        height: 100
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a07e659e1e75373a0800000000000000
-      internalID: -6668889995411527926
+      spriteID: 4e1e4d70d615be980800000000000000
+      internalID: -8508617542261743132
       vertices: []
       indices: 
       edges: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: bf2f7fa2dea33ad41a49eaa050c0e140
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Card_05: -6668889995411527926
+      i1881469199_0: -8508617542261743132
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
