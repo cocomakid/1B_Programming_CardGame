@@ -17,19 +17,11 @@ public class CardGame : MonoBehaviour
     private Card secondCard = null;
     private bool isChecking = false;
 
-    
     void Start()
     {
         StartGame();
 
     }
-
-    
-    void Update()
-    {
-
-    }
-
     private List<int> GeneratePairNum(int cardCount)
     {
         int pairCount = cardCount / 2; 
@@ -84,8 +76,8 @@ public class CardGame : MonoBehaviour
             firstCard.isMatched = true;
             secondCard.isMatched = true;
 
-            firstCard.ChangeColor(Color.yellow);
-            secondCard.ChangeColor(Color.yellow);
+            firstCard.ChangeColor(Color.ghostWhite);
+            secondCard.ChangeColor(Color.ghostWhite);
 
             firstCard = null;
             secondCard = null;
