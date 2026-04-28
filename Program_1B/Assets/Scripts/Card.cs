@@ -3,37 +3,42 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
-
 public class Card : MonoBehaviour
 {
-    public TextMeshProUGUI card;
+    public TextMeshProUGUI cardText;
     public int cardNum;
-    public float rotateSpeed;
+    public float rotateSpeed = 10f; 
 
-    private Sprite mySpriteImage;
-    public Sprite defaultSprite;
+    private Sprite spriteImage;   
+    public Sprite defaultSprite;   
 
     public bool isFront = false;
-
     public bool isMatched = false;
-
 
     public Quaternion flipRotation = Quaternion.Euler(0, 180f, 0);
     public Quaternion originRotation = Quaternion.Euler(0, 0, 0);
 
-    public CardGame cardGame;
+    private CardGame cardGame;
+
+    void Start()
+    {
+        cardGame = FindFirstObjectByType<CardGame>();
+    }
 
     void Update()
     {
-        if(isFront)
+        if (isFront)
         {
             transform.rotation = Quaternion.Slerp(transform.rotation, originRotation, rotateSpeed * Time.deltaTime);
-            GetComponent<Image>().sprite = mySpriteImage;
         }
         else
         {
             transform.rotation = Quaternion.Slerp(transform.rotation, flipRotation, rotateSpeed * Time.deltaTime);
-            GetComponent<Image>().sprite = defaultSprite;
+        }
+
+        if (transform.rotation.eulerAngles.y < 90 || transform.rotation.eulerAngles.y > 270)
+        {
+            GetComponent<Image>().sprite = isFront ? spriteImage : defaultSprite;
         }
     }
 
@@ -42,16 +47,15 @@ public class Card : MonoBehaviour
         if (!isMatched)
         {
             cardGame.OnClickCard(this);
-
         }
     }
 
     public void SetCardNum(int newNum)
     {
-        card = GetComponentInChildren<TextMeshProUGUI>();
-        cardNum = newNum;
+        if (cardText == null) cardText = GetComponentInChildren<TextMeshProUGUI>();
 
-        card.text = cardNum.ToString();
+        cardNum = newNum;
+        if (cardText != null) cardText.text = cardNum.ToString();
     }
 
     public void ChangeColor(Color newColor)
@@ -61,8 +65,8 @@ public class Card : MonoBehaviour
 
     public void SetImage(Sprite sprite)
     {
-        GetComponent<Image>().sprite = sprite;
-        mySpriteImage = sprite;
+        spriteImage = sprite;
+        GetComponent<Image>().sprite = defaultSprite;
     }
 
     public void Flip(bool isFront)
