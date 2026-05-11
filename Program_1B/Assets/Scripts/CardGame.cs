@@ -1,8 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class CardGame : MonoBehaviour
+
 {
     [Header("설정")]
     public int cardNum;
@@ -10,18 +10,15 @@ public class CardGame : MonoBehaviour
     private int mincard = 1;
 
     [Header("프리팹")]
-    public GameObject cardPrefab; 
-    public Transform cardParent;  
+    public GameObject cardPrefab;
+    public Transform cardParent;
 
     [Header("리소스")]
-    public List<Sprite> sprites; 
-
-    private List<Card> cards = new List<Card>(); 
-
+    public List<Sprite> sprites;
+    private List<Card> cards = new List<Card>();
     private Card firstCard = null;
     private Card secondCard = null;
     private bool isChecking = false;
-
     void Start()
     {
         StartGame();
@@ -45,8 +42,8 @@ public class CardGame : MonoBehaviour
             newCardNum[i] = newCardNum[rnd];
             newCardNum[rnd] = temp;
         }
-
         return newCardNum;
+
     }
 
     private void StartGame()
@@ -66,25 +63,26 @@ public class CardGame : MonoBehaviour
 
             int xGrid = i % 10;
             int yGrid = i / 10;
-            go.GetComponent<RectTransform>().anchoredPosition = new Vector2(xGrid * 180, yGrid * -160);
 
+            go.GetComponent<RectTransform>().anchoredPosition = new Vector2(xGrid * 180, yGrid * -160);
             cardScript.SetCardNum(randCardNum[i]);
             cardScript.SetImage(sprites[randCardNum[i]]);
-
             cards.Add(cardScript);
         }
     }
 
-
     private void CheckCard()
     {
         isChecking = true;
+
         if (firstCard.cardNum == secondCard.cardNum)
         {
             firstCard.isMatched = true;
             secondCard.isMatched = true;
+
             firstCard.ChangeColor(Color.ghostWhite);
             secondCard.ChangeColor(Color.ghostWhite);
+
             firstCard = null;
             secondCard = null;
             isChecking = false;
@@ -94,7 +92,6 @@ public class CardGame : MonoBehaviour
             Invoke("Hide", 1.0f);
         }
     }
-
     private void Hide()
     {
         firstCard.Flip(false);
@@ -103,7 +100,6 @@ public class CardGame : MonoBehaviour
         firstCard = null;
         secondCard = null;
     }
-
     public void OnClickCard(Card clickedCard)
     {
         if (isChecking || clickedCard.isMatched || clickedCard == firstCard) return;

@@ -2,19 +2,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-
 public class Card : MonoBehaviour
 {
     public TextMeshProUGUI cardText;
     public int cardNum;
-    public float rotateSpeed = 10f; 
+    public float rotateSpeed = 10f;
 
-    private Sprite spriteImage;   
-    public Sprite defaultSprite;   
-
+    private Sprite spriteImage;
+    public Sprite defaultSprite;
     public bool isFront = false;
     public bool isMatched = false;
-
     public Quaternion flipRotation = Quaternion.Euler(0, 180f, 0);
     public Quaternion originRotation = Quaternion.Euler(0, 0, 0);
 
@@ -24,7 +21,6 @@ public class Card : MonoBehaviour
     {
         cardGame = FindFirstObjectByType<CardGame>();
     }
-
     void Update()
     {
         if (isFront)
@@ -40,8 +36,8 @@ public class Card : MonoBehaviour
         {
             GetComponent<Image>().sprite = isFront ? spriteImage : defaultSprite;
         }
-    }
 
+    }
     public void ClickCard()
     {
         if (!isMatched)
@@ -49,11 +45,9 @@ public class Card : MonoBehaviour
             cardGame.OnClickCard(this);
         }
     }
-
     public void SetCardNum(int newNum)
     {
         if (cardText == null) cardText = GetComponentInChildren<TextMeshProUGUI>();
-
         cardNum = newNum;
         if (cardText != null) cardText.text = cardNum.ToString();
     }
@@ -62,15 +56,14 @@ public class Card : MonoBehaviour
     {
         GetComponent<Image>().color = newColor;
     }
-
     public void SetImage(Sprite sprite)
     {
         spriteImage = sprite;
         GetComponent<Image>().sprite = defaultSprite;
     }
-
     public void Flip(bool isFront)
     {
         this.isFront = isFront;
     }
+
 }
