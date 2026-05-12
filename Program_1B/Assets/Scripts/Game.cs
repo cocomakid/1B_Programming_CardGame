@@ -28,14 +28,15 @@ public partial class Game : MonoBehaviour
 
     private void StartGame()
     {
+        SoundManager.instance.PlaySoundBGM();
+
         foreach (Cardd c in cards) { if (c != null) Destroy(c.gameObject); }
         cards.Clear();
 
         int maxAvailable = sprites.Count;
 
         if (cardNum > maxAvailable)
-        {
-            Debug.LogWarning($"이미지가 {maxAvailable}개뿐이라 cardNum을 조절했습니다.");
+        { 
             cardNum = maxAvailable;
         }
         else if (cardNum < 1) cardNum = 1;
@@ -66,8 +67,7 @@ public partial class Game : MonoBehaviour
             list.Add(i);
             list.Add(i);
         }
-
-        // 셔플 (Fisher-Yates Shuffle)
+    
         for (int i = list.Count - 1; i > 0; i--)
         {
             int rnd = Random.Range(0, i + 1);
@@ -87,10 +87,12 @@ public partial class Game : MonoBehaviour
         if (firstCard == null)
         {
             firstCard = clickedCard;
+            SoundManager.instance.PlaySound();
         }
         else
         {
             secondCard = clickedCard;
+            SoundManager.instance.PlaySound();
             StartCoroutine(CheckCardRoutine());
         }
     }
